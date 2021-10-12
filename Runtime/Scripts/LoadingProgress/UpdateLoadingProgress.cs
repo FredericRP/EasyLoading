@@ -9,7 +9,7 @@ namespace FredericRP.EasyLoading
     [SerializeField]
     LoadScene sceneLoader = null;
     [SerializeField]
-    GameEvent loadingProgressEvent = null;
+    FloatStringGameEvent loadingProgressEvent = null;
     [Header("Update delay")]
     [SerializeField]
     float delayToUpdateProgress = 0.2f;
@@ -46,7 +46,7 @@ namespace FredericRP.EasyLoading
 
     protected void SendProgressEvent(float progress)
     {
-      loadingProgressEvent.Raise<float, string>(progress, null);
+      loadingProgressEvent.Raise(progress, null);
     }
   }
 }

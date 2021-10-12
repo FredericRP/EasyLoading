@@ -6,7 +6,7 @@ namespace FredericRP.EasyLoading
   public abstract class MonitorGaugeProgress : MonoBehaviour
   {
     [SerializeField]
-    GameEvent progressEvent = null;
+    FloatStringGameEvent progressEvent = null;
     [SerializeField]
     protected float ratio = 1;
     [SerializeField]
@@ -16,25 +16,25 @@ namespace FredericRP.EasyLoading
 
     public string GaugeId { get => gaugeId; set => gaugeId = value; }
 
-    private void OnEnable()
+    internal void OnEnable()
     {
-      progressEvent.Listen<float, string>(UpdateProgress);
+      progressEvent.Listen(UpdateProgress);
     }
 
-    private void OnDisable()
+    internal void OnDisable()
     {
-      progressEvent.Delete<float, string>(UpdateProgress);
+      progressEvent.Delete(UpdateProgress);
     }
 
     /// <summary>
     /// Update the gauge from parameter progress.
     /// GaugeId can be specified, or null for all existing gauges
     /// </summary>
-    /// <param name="gaugeId"></param>
-    /// <param name="progress"></param>
+    /// <param name="gaugeId">Specific gauge id, or null for all of them</param>
+    /// <param name="progress">Progress of the loading, between 0.0f and 1.0f</param>
     public void UpdateProgress(float progress, string gaugeId = null)
     {
-      if (gaugeId != null && !this.gaugeId.Equals(gaugeId))
+      if (!string.IsNullOrWhiteSpace(gaugeId) && !this.gaugeId.Equals(gaugeId))
         return;
       DisplayGaugeProgress(progress);
     }
