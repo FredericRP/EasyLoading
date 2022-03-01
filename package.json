@@ -6,8 +6,8 @@
   "unity": "2020.1",
   "unityRelease": "0f1",
   "dependencies": {
-    "com.fredericrp.screentransitions": "1.3.0",
-    "com.fredericrp.eventmanagement": "1.3.0",
+    "com.fredericrp.transition": "1.3.0",
+    "com.fredericrp.eventhandler": "1.3.0",
     "com.unity.textmeshpro": "3.0.6"
   },
   "keywords": [
