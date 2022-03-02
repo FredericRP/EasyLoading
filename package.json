@@ -1,6 +1,6 @@
 {
   "name": "com.fredericrp.easyloading",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "displayName": "FRP Easy Loading",
   "description": "Set of tools to load scenes and monitor its progress.",
   "unity": "2020.1",

@@ -2,7 +2,7 @@
 
 Set of tools to load scenes and monitor its progress.
 
-![scene transition](Documentation~/images/transition-sample.gif)
+![scene transition](Documentation~/Images/transition-sample.gif)
 
 ## Usage
 
@@ -13,7 +13,7 @@ Set of tools to load scenes and monitor its progress.
 3. Tick the *async* checkbox if you want an asynchronous loading process
 4. Select *OnStart* if you want the load to be launched as soon as the game object is loaded and enabled in your scene.
 
-![load scene script](Documentation~/images/loadScene.jpg)
+![load scene script](Documentation~/Images/loadScene.jpg)
 
 - Select *OnCall* to disable auto load, and call the public *StartLoading()* method when you want to load the next scene.
 - Select *OnTrigger* so the load is done when the specified event is raised in your scene.
