@@ -1,6 +1,6 @@
 {
     "name": "com.fredericrp.easyloading",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "displayName": "FRP Easy Loading",
     "description": "Set of tools to load scenes and monitor its progress.",
     "unity": "2020.1",
@@ -8,8 +8,8 @@
         "standard assets"
     ],
     "dependencies": {
-        "com.fredericrp.transition": "1.3.0",
-        "com.fredericrp.eventhandler": "1.5.2",
+        "com.fredericrp.transition": "1.3.2",
+        "com.fredericrp.eventhandler": "1.5.3",
         "com.unity.textmeshpro": "3.0.6"
     },
     "author": {
