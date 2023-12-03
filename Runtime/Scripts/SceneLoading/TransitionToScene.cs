@@ -22,7 +22,7 @@ namespace FredericRP.EasyLoading
     {
       // Unity Inside Hack : operation is locked at 0.9 until allowSceneActivation is set to true,
       // so we must monitor this value to smoothly launch the transition, then allow the scene to be activated
-      if (AsyncOperation != null && AsyncOperation.progress == 0.9f && !transitionInProgress)
+      if (async && AsyncOperation != null && AsyncOperation.progress == 0.9f && !transitionInProgress)
       {
 #if UNITY_EDITOR && DEBUG
         Debug.Log(Time.time + ":" + gameObject.name + " > AsynOperation Progress is 0.9, launch transition");
@@ -43,7 +43,6 @@ namespace FredericRP.EasyLoading
     /// </summary>
     public void AllowSceneActivation()
     {
-      Debug.Log(Time.time + ":" + gameObject.name + " > Activation of " + this.sceneName + " !");
       transitionInProgress = false;
       AsyncOperation.allowSceneActivation = true;
     }

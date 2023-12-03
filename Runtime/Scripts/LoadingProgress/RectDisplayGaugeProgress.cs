@@ -12,10 +12,12 @@ namespace FredericRP.EasyLoading
     float anchorMin = 0.1f;
     [SerializeField]
     bool hideBelowMin = false;
+    [SerializeField]
+    bool leftToRight = true;
 
     protected override void DisplayGaugeProgress(float progress)
     {
-      Vector2 anchorMax = gaugeRect.anchorMax;
+      Vector2 anchorPos = leftToRight ? gaugeRect.anchorMax : gaugeRect.anchorMin;
       float anchorX = progress * ratio + offset;
       // At least some pixels width
       if (anchorX < anchorMin)
@@ -23,15 +25,18 @@ namespace FredericRP.EasyLoading
         if (hideBelowMin)
           gaugeRect.gameObject.SetActive(false);
         else
-          anchorMax.x = anchorMin;
+          anchorPos.x = anchorMin;
       }
       else
       {
-        anchorMax.x = anchorX;
+        anchorPos.x = anchorX;
         if (!gaugeRect.gameObject.activeInHierarchy)
           gaugeRect.gameObject.SetActive(true);
       }
-      gaugeRect.anchorMax = anchorMax;
+      if (leftToRight)
+        gaugeRect.anchorMax = anchorPos;
+      else
+        gaugeRect.anchorMin = anchorPos;
     }
   }
 }

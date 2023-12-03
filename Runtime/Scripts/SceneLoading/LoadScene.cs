@@ -10,17 +10,17 @@ namespace FredericRP.EasyLoading
     /// <summary>
     /// Loading process can be called: by a script, onStart automatically, on specified event
     /// </summary>
-    protected enum LoadingTrigger { onCall, onStart, onEvent};
+    protected enum LoadingTrigger { onCall, onStart, onEvent, onSceneLoaded };
 
     [SerializeField]
     protected string sceneName = null;
-   
+
     [SerializeField]
     protected bool async = false;
     /// <summary>
     /// When will be called the loading process ? if onCall, it's explicitly from a script
     /// </summary>
-    [SerializeField]    
+    [SerializeField]
     protected LoadingTrigger loadingTrigger = LoadingTrigger.onStart;
     [SerializeField]
     protected GameEvent loadingEvent;
@@ -38,7 +38,7 @@ namespace FredericRP.EasyLoading
         yield return new WaitForSeconds(1.5f);
       Debug.Log("Slow mode. Waiting for 1.5sec before launching transition");
 #else
-      yield return null;
+        yield return null;
 #endif
         StartLoading();
       }
@@ -60,26 +60,21 @@ namespace FredericRP.EasyLoading
 
     protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-      if (loadingTrigger == LoadingTrigger.onEvent && loadingEvent != null)
-        loadingEvent?.Raise();
-
-      Debug.Log(Time.time + ":" + gameObject.name + " > Scene <" + scene.name + "> Loaded !");
+      if (loadingTrigger == LoadingTrigger.onSceneLoaded)
+        StartLoading();
     }
 
     public virtual void StartLoading()
     {
+      //Debug.Log($"{gameObject.name} > Start Loading {async}");
       if (async)
       {
-        Debug.Log(Time.time + ":" + gameObject.name + " > Loading ASYNC scene <" + sceneName + ">");
         asyncOperation = SceneManager.LoadSceneAsync(sceneName);
       }
       else
       {
-        Debug.Log(Time.time + ":" + gameObject.name + " > Loading scene <" + sceneName + ">");
         SceneManager.LoadScene(sceneName);
       }
     }
-
-    
   }
 }

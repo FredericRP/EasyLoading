@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 
+## [1.0.5] - 2023-12-03
+
+### Added
+- A LoadingObjectManager and IShouldWait to enable serialization of object loading, see [README](README.md) for more details
+
+### Changed
+- The way the onEvent was used, not very user friendly. A new trigger onSceneLoaded makes better sense for the initial usage.
+
 ## [1.0.4] - 2022-04-06
 
 ### Fixed
